@@ -1,20 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: chbouthe <chbouthe@student.42perpignan.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 18:25:47 by chbouthe          #+#    #+#             */
-/*   Updated: 2024/04/18 18:27:39 by chbouthe         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Animal.hpp"
+#include "WrongAnimal.hpp"
+#include "Cat.hpp"
+#include "WrongCat.hpp"
+#include "Dog.hpp"
 
-int main( void )
+int main()
 {
-    Animal Chien;
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	delete meta;
+	delete j;
+	delete i;
 
-    return 0;
+	const WrongAnimal* a = new WrongCat();
+	std::cout << a->getType() << " " << std::endl;
+	a->makeSound();
+	WrongCat b;
+	std::cout << b.getType() << " " << std::endl;
+	b.makeSound();
+	delete a;
+	return (0);
 }

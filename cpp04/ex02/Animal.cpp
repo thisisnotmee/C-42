@@ -12,25 +12,27 @@ Animal::~Animal(void)
 	return;
 }
 
-Animal::Animal(Animal const &other) : type(other.type)
+Animal::Animal(Animal const &other)
 {
 	std::cout << "Passing through Animal copy constructor" << std::endl;
+	*this = other;
 	return;
 }
 
 Animal &Animal::operator=(Animal const &other)
 {
-	std::cout << "Passing through animal operator=() overload" << std::endl;
-	type = other.type;
+	std::cout << "Passing through operator=() overload" << std::endl;
+	this->type = other.getType();
+	*(this->get_brain()) = *(other.get_brain());
 	return *this;
-}
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "Some noise" << std::endl;
 }
 
 std::string	Animal::getType(void) const
 {
-	return (type);
+	return (this->type);
+}
+
+Brain *Animal::get_brain(void) const
+{
+	return (NULL);
 }
