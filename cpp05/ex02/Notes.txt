@@ -1,0 +1,34 @@
+_________________________________________________________
+
+					Notions CPP 05
+				 HERITAGE DE CLASSES
+_________________________________________________________
+
+1. Les Classes Polymorphes et Abstraites
+
+2.
+
+.........................................................
+
+
+1. Polymorphisme et Abstraction
+
+	 Lorsqu’une tâche est effectuée de différentes manières, elle est connue sous le nom de polymorphisme. 
+	En C++, nous utilisons la surcharge de fonctions et la redéfinition de fonctions pour obtenir le polymorphisme.
+
+	L’abstraction est un processus qui consiste à masquer des détails non pertinents à l’utilisateur.
+	Par exemple, lorsque vous envoyez un SMS, vous tapez simplement le message, sélectionnez le contact 
+	et cliquez sur Envoyer, le téléphone vous indique que le message a été envoyé. 
+		Ce qui se passe réellement en arrière-plan lorsque vous cliquez sur Envoyer est masqué car il n’est pas pertinent à vous.
+	
+	En C ++, nous utilisons une classe abstraite et une interface pour réaliser l’abstraction.
+
+
+.........................................................
+
+2. function() const 
+
+	En C++, lorsqu'une fonction membre est suivie du mot-clé const, 
+	cela signifie que cette fonction ne modifie pas l'état de l'objet. 
+		Elle garantit que toutes les variables membres de la classe restent inchangées.
+
