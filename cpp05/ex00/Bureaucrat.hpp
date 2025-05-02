@@ -20,13 +20,15 @@ class Bureaucrat{
 		void		SetGrade(int grade);							
         void	GradeIncrase( void );
         void	GradeDecrase( void );
-        void 	afficher(std::ostream& os);
 
         class GradeTooHighException : public std::exception {
             virtual const char* what() const throw() { return "Grade Too High Exception"; }
         };
         class GradeTooLowException : public std::exception {
             virtual const char* what() const throw() { return "Grade Too Low Exception"; }
+        };
+        class InvalidPrint : public std::exception {
+            virtual const char * what() const throw(){return "Invalid grade cannot print";}
         };
 
     private:

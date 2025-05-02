@@ -1,25 +1,36 @@
-NAME = BUREAU-CRAT
+NAME = Bureaucrat
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+CC = c++
 
-CPP_FILES = *.cpp
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-OBJ_FILES = *.o
+SRCS = intern.cpp\
+		Bureaucrat.cpp\
+		AForm.cpp\
+		main.cpp\
+		Presidential.cpp\
+		Robotomy.cpp\
+		Shrubbery.cpp\
+
+OBJ = $(SRCS:.cpp=.o)
 
 RM = rm -rf
 
-all :
-	@make clean; clear
-	@c++ $(FLAGS) $(CPP_FILES) -c
-	@c++ $(FLAGS) $(OBJ_FILES) -o $(NAME)
-	@echo "Compilation terminée";
-	@echo "Lancement du programme"; sleep 1; clear; ./$(NAME)
+all : $(NAME)
+	@./$(NAME)
 
-clean :
-	@$(RM) $(OBJ_FILES)
-	@$(RM) $(NAME)
+%.o:%.cpp
+	c++ $(CPPFLAGS) -I./ -c $< -o $@
 
-re :
-	@$(CLEAN)
-	@$(ALL)
+$(NAME) : $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
+clean:
+	$(RM) ./*.o
+	$(RM) $(NAME)
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re: fclean
+	$(NAME)

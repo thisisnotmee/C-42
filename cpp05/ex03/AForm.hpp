@@ -44,4 +44,6 @@ class AForm {
         const int           _2exec;
 };
 
+std::ostream &	operator<<(std::ostream &o, AForm &src);
+
 #endif

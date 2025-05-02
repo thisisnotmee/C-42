@@ -7,10 +7,17 @@ AForm::~AForm( void ){}
 
 AForm::AForm(std::string name, int sign, int exec): _name(name), _2sign(sign), _2exec(exec)
 {
-	if (sign > 150 || exec > 150)
-		throw AForm::GradeTooLowException();
-	else if (sign < 1 || exec < 1)
-		throw AForm::GradeTooHighException();
+	try {
+		if (sign > 150 || exec > 150)
+			throw AForm::GradeTooLowException();
+		else if (sign < 1 || exec < 1)
+			throw AForm::GradeTooHighException();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
 }
 
 AForm&	AForm::operator=( const AForm &copy )
@@ -64,20 +71,14 @@ void   AForm::beSigned(Bureaucrat &src)
 	}
 }
 
-
-
-std::ostream	&AForm::print(std::ostream &os) const
+std::ostream &	operator<<(std::ostream &o, AForm &src)
 {
-    os << "\n*****************\n"
-	   << "* Form Infos  \n"
-	   << "*****************\n"
-       << "* Name : " << GetName()
-       << "\n* Is Signed : " << (GetSigned() ? "Yes" : "No")
-       << "\n* Grade Sign : " << GetGrade2sign()
-       << "\n* Grade Exec : " << GetGrade2exec()
-	   << "\n*****************\n";
-
-	   return os;
+	o << "Le formulaire, " << src.GetName() << " || grade2sign  : " << src.GetGrade2sign() << " || grade2exec : " << src.GetGrade2exec();
+	if (src.GetSigned())
+		o << " || est signé";
+	else if (!src.GetSigned())
+		o << " || n'est pas signé";
+	return o;
 }
 
 void	AForm::execute(Bureaucrat const &executor) const

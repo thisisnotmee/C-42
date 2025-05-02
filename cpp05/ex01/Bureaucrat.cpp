@@ -1,22 +1,6 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-/*
-_____________________________________________________
-
-					EXERCICE 2
-					Consignes
-_____________________________________________________
-
-Création d'une classe Form.
-
-std::exception pour les erreurs.
-
-150 = MIN_GRADE
-
-1 = MAX_GRADE
-
-*/
 
 Bureaucrat::Bureaucrat( void ): _name("default")
 {
@@ -58,7 +42,10 @@ Bureaucrat&	Bureaucrat::operator=( const Bureaucrat &copy )
 
 std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &src)
 {
-	os << src.GetName() << ", Bureaucrat grade " << src.GetGrade() << ".";
+	if (src.GetGrade() > 150 || src.GetGrade() < 1)
+		os << "Bureaucrat " << src.GetName() << " ne peut être affiché pour grade incorrect";
+	else
+		os << src.GetName() << ", Bureaucrat grade " << src.GetGrade() << ".";
 	return os;
 }
 

@@ -22,7 +22,6 @@ class Bureaucrat {
         Bureaucrat&	operator=( const Bureaucrat &copy ); 
 		std::string		GetName( void ) const;
 		int		GetGrade( void ) const;
-		void	print( void );
 		void		SetGrade( int grade );
         void	GradeIncrase( void );
         void	GradeDecrase( void );
@@ -46,6 +45,6 @@ class Bureaucrat {
         int                 _grade;
 };
 
-std::ostream	&operator<<(std::ostream &output, Bureaucrat &cible);
+std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &src);
 
 #endif

@@ -1,9 +1,5 @@
 #include "Bureaucrat.hpp"
 
-/* * * * * * * * * * * * * * * * * * * * * * * * 			
-				FORME CANONIQUE			
-* * * * * * * * * * * * * * * * * * * * * * * */
-
 Bureaucrat::Bureaucrat( void ): _name("default") {this->SetGrade(150);}
 
 Bureaucrat::~Bureaucrat( void ) {}
@@ -23,31 +19,19 @@ Bureaucrat&	Bureaucrat::operator=( const Bureaucrat &copy )
 	return *this;
 }
 
-std::ostream&	operator<<(std::ostream &output, Bureaucrat &cible)
+std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &src)
 {
-	output << cible.GetName() << ", Bureaucrat à pour grade : " << cible.GetGrade() << std::endl;
-	
-	return output;
+	if (src.GetGrade() > 150 || src.GetGrade() < 1)
+		os << "Bureaucrat " << src.GetName() << " ne peut être affiché pour grade incorrect";
+	else
+		os << src.GetName() << ", Bureaucrat grade " << src.GetGrade() << ".";
+	return os;
 }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * 			
-				GETTERS			
-* * * * * * * * * * * * * * * * * * * * * * * */
 
 std::string	Bureaucrat::GetName( void ) const {return this->_name;}
 
 int		Bureaucrat::GetGrade( void ) const {return this->_grade;}
-
-
-/* * * * * * * * * * * * * * * * * * * * * * * * 			
-				FONCTIONS MEMBRES		
-* * * * * * * * * * * * * * * * * * * * * * * */
-
-void	Bureaucrat::print( void )
-{
-	std::cout << this->GetName() << std::endl;
-	std::cout << this->GetGrade() << std::endl;
-}
 
 void	Bureaucrat::GradeIncrase( void )
 {
@@ -111,7 +95,7 @@ void	Bureaucrat::SignForm( AForm &form )
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const &form)
+void	Bureaucrat::executeForm( AForm const &form )
 {
 	try
 	{

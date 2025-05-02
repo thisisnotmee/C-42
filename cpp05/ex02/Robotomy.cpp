@@ -25,9 +25,15 @@ std::string RobotomyRequestForm::GetCible() const
 void	RobotomyRequestForm::beExecuted(Bureaucrat const &executor) const
 {
 	int	i = 0;
-
-	if (executor.GetGrade() > this->GetGrade2exec())
-		throw GradeTooLowException();
+	try 
+	{
+		if (executor.GetGrade() > this->GetGrade2exec())
+			throw GradeTooLowException();
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	std::cout << "Pense... Pense..." << std::endl;
 	sleep(1);
 	std::cout << "Pense... Pense..." << std::endl;

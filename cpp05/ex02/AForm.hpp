@@ -25,18 +25,13 @@ class AForm {
 		std::ostream &print(std::ostream &os) const;
 
         class GradeTooLowException : public std::exception {
-			virtual const char* what() const throw();
+			virtual const char* what() const throw() {return "Grade Too Low Exception";}
         };
 
         class GradeTooHighException : public std::exception{
-			virtual const char* what() const throw();
+			virtual const char* what() const throw() {return "Grade Too High Exception";}
 		};
 
-        class Form_Already_Signed : public std::exception {
-            virtual const char *what() const throw (){
-                return ("Form already signed exception");
-            };
-        };
 
     private :
         const std::string   _name;
@@ -44,5 +39,8 @@ class AForm {
         const int           _2sign;
         const int           _2exec;
 };
+
+std::ostream	&operator<<(std::ostream &o, AForm *a);
+
 
 #endif

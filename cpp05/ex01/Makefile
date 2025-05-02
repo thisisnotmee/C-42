@@ -1,25 +1,31 @@
-NAME = EX01_EXEC
+NAME = Bureaucrat
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+CC = c++
 
-CPP_FILES = *.cpp
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-OBJ_FILES = *.o
+SRCS = ./Bureaucrat.cpp \
+		./Form.cpp \
+		main.cpp
+
+OBJ = $(SRCS:.cpp=.o)
 
 RM = rm -rf
 
-all :
-	@make clean; clear
-	@c++ $(FLAGS) $(CPP_FILES) -c
-	@c++ $(FLAGS) $(OBJ_FILES) -o $(NAME)
-	@echo "Compilation terminée";
-	@echo "Lancement du programme"; sleep 1; clear; ./$(NAME)
+all : $(NAME)
+	@./$(NAME)
 
-clean :
-	@$(RM) $(OBJ_FILES)
-	@$(RM) $(NAME)
+%.o:%.cpp
+	c++ $(CPPFLAGS) -I./ -c $< -o $@
 
-re :
-	@$(CLEAN)
-	@$(ALL)
+$(NAME) : $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
+clean:
+	$(RM) ./*.o
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re: fclean
+	$(NAME)

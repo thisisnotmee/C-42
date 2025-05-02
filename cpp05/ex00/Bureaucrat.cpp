@@ -40,7 +40,10 @@ Bureaucrat&	Bureaucrat::operator=( const Bureaucrat &copy )
 
 std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &src)
 {
-	os << src.GetName() << ", Bureaucrat grade " << src.GetGrade() << ".";
+		if (src.GetGrade() > 150 || src.GetGrade() < 1)
+			os << "Bureaucrat " << src.GetName() << " ne peut être affiché pour grade incorrect";
+		else
+			os << src.GetName() << ", Bureaucrat grade " << src.GetGrade() << ".";
 	return os;
 }
 
@@ -48,7 +51,7 @@ void	Bureaucrat::GradeIncrase( void )
 {
 	try
 	{
-		if (this->GetGrade() == 1)
+		if (this->GetGrade() <= 1)
 			throw GradeTooHighException();
 		else
 			this->_grade--;
@@ -63,7 +66,7 @@ void	Bureaucrat::GradeDecrase( void )
 {
 	try
 	{
-		if (this->GetGrade() == 150)
+		if (this->GetGrade() >= 150)
 			throw GradeTooLowException();
 		else
 			this->_grade++;

@@ -13,22 +13,28 @@ Form	&Form::operator=(Form &src)
 
 std::ostream &	operator<<(std::ostream &o, Form &src)
 {
-	o << src.GetName() << ", " << src.GetGrade2sign() << ", " << src.GetGrade2exec();
-
+	o << "Le formulaire, " << src.GetName() << " || grade2sign  : " << src.GetGrade2sign() << " || grade2exec : " << src.GetGrade2exec();
 	if (src.GetSigned())
-		o << ", signed";
-	else if (src.GetSigned() == false)
-		o << ", not signed";
-
+		o << " || est signé";
+	else if (!src.GetSigned())
+		o << " || n'est pas signé";
 	return o;
 }
 
 Form::Form(std::string name, int sign, int exec):_name(name), _signed(false), _2sign(sign), _2exec(exec)
 {
-	if (sign > 150 || exec > 150)
-		throw Form::GradeTooLowException();
-	else if (sign < 1 || exec < 1)
-		throw Form::GradeTooHighException();
+	try 
+	{
+		if (sign > 150 || exec > 150)
+			throw Form::GradeTooLowException();
+		else if (sign < 1 || exec < 1)
+			throw Form::GradeTooHighException();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << "\n";
+	}
+
 }
  
 int    Form::GetGrade2sign() const {return this->_2sign;}
@@ -39,7 +45,7 @@ std::string     Form::GetName() const {return this->_name;}
 
 bool    Form::GetSigned() const {return this->_signed;}
 
-// Ca c beau 
+// c beau 
 
 void    Form::BeSigned(Bureaucrat &src)
 {

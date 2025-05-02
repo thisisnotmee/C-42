@@ -11,10 +11,18 @@ AForm::~AForm( void ){}
 
 AForm::AForm(std::string name, int sign, int exec): _name(name), _2sign(sign), _2exec(exec)
 {
-	if (sign > 150 || exec > 150)
-		throw AForm::GradeTooLowException();
-	else if (sign < 1 || exec < 1)
-		throw AForm::GradeTooHighException();
+	try 
+	{
+		if (sign > 150 || exec > 150)
+			throw AForm::GradeTooLowException();
+		else if (sign < 1 || exec < 1)
+			throw AForm::GradeTooHighException();
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
 }
 
 AForm&	AForm::operator=( const AForm &copy )
@@ -28,10 +36,6 @@ AForm::AForm(AForm &copy): _name(copy.GetName()), _2sign(copy.GetGrade2sign()), 
 	std::cout << "Copie du formulaire :   " << this->GetName() << std::endl;
 }
 
-
-/* * * * * * * * * * * * * * * * * * * * * * * * 			
-				GETTERS			
-* * * * * * * * * * * * * * * * * * * * * * * */
  
 int    AForm::GetGrade2sign() const {return this->_2sign;}
 
@@ -40,31 +44,6 @@ int    AForm::GetGrade2exec() const {return this->_2exec;}
 std::string     AForm::GetName() const {return this->_name;}
 
 bool    AForm::GetSigned() const {return this->_signed;}
-
-/* * * * * * * * * * * * * * * * * * * * * * * * 			
-				FONCTIONS MEMBRE			
-* * * * * * * * * * * * * * * * * * * * * * * */
-/*
-void    AForm::beSigned(Bureaucrat &src)
-{
-	try 
-	{
-		if (this->GetSigned())
-			throw AForm::Form_Already_Signed();
-		else if (src.GetGrade() > this->GetGrade2sign())
-			throw AForm::GradeTooLowException();
-		else
-		{
-			this->_signed = true;
-			std::cout << "Formulaire Signé !" << std::endl;
-		}
-	}
-	catch ( std::exception &e )
-	{
-		std::cout << e.what() << std::endl;
-	}
-}
-*/
 
 void   AForm::beSigned(Bureaucrat &src)
 {
@@ -97,12 +76,6 @@ void   AForm::beSigned(Bureaucrat &src)
 	}
 }
 
-const char *AForm::GradeTooHighException::what() const throw() {return "Grade Too High Exception";}
-
-const char *AForm::GradeTooLowException::what() const throw() {return "Grade Too Low Exception";}
-
-
-
 std::ostream	&AForm::print(std::ostream &os) const
 {
     os << "\n*****************\n"
@@ -116,6 +89,17 @@ std::ostream	&AForm::print(std::ostream &os) const
 
 	   return os;
 }
+
+std::ostream	&operator<<(std::ostream &o, AForm *a)
+{
+	o << "Form " << a->GetName() <<
+	":\n\tsign-grade:\t" << a->GetGrade2sign() <<
+	"\n\texec-grade:\t" << a->GetGrade2exec() <<
+	"\n\tis signed:\t" << a->GetSigned() <<
+	std::endl;
+	return (o);
+}
+
 
 void	AForm::execute(Bureaucrat const &executor) const
 {

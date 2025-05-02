@@ -1,21 +1,20 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-/* PAS DE TRY CATCH ICI Bggg <3 */
-
 int main( void )
 {
-    Bureaucrat B1("B1", 100);
+    Bureaucrat pleb("pauvres", 149);
+    std::cout << pleb << std::endl;
 
-    Bureaucrat  dieu("dieu", 1);
+    Bureaucrat  DIEU("dieu", 1);
 
-    Form    F1("F1", 90, 90);
+    Form    F1("F1", -10, 148);
 
-    B1.SignForm(F1);
-    B1.SignForm(F1);
-    F1.BeSigned(B1);
-    F1.BeSigned(dieu);
-    F1.BeSigned(dieu);
-    F1.BeSigned(dieu);
-    F1.BeSigned(dieu);
+    std::cout << F1 << std::endl;
+    
+    pleb.SignForm(F1);
+
+    pleb.GradeIncrase();
+    std::cout << pleb << std::endl;
+    pleb.SignForm(F1);
 }

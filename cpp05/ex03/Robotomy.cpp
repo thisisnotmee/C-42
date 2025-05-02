@@ -13,7 +13,8 @@ RobotomyRequestForm::RobotomyRequestForm( std::string cible ): AForm("RobotomyRe
 
 std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm const  &src)
 {
-	o << src.GetCible() << ", " << src.GetName() << ", " << src.GetGrade2sign() << ", " << src.GetGrade2exec() << std::endl;
+	o << "Cible : " << src.GetCible() << ", Nom : " << src.GetName()
+	<< ", Grade2Sign :" << src.GetGrade2sign() << ", Grade2exec :" << src.GetGrade2exec() << std::endl;
 	return o;
 }
 
@@ -24,17 +25,23 @@ std::string RobotomyRequestForm::GetCible() const
 
 void	RobotomyRequestForm::beExecuted(Bureaucrat const &executor) const
 {
-	int	i = 0;
+	try {
+		int	i = 0;
 
-	if (executor.GetGrade() > this->GetGrade2exec())
-		throw GradeTooLowException();
-	std::cout << "Pense... Pense..." << std::endl;
-	sleep(1);
-	std::cout << "Pense... Pense..." << std::endl;
-	srand(time(NULL));
-	i = rand();
-	if (i % 2 == 0)
-		std::cout << this->_cible << " à été robotomisé avec succès" << std::endl;
-	else
-		std::cout << this->_cible << " n'a pas pu être robotomisé" << std::endl;
+		if (executor.GetGrade() > this->GetGrade2exec())
+			throw GradeTooLowException();
+		std::cout << "Pense... Pense..." << std::endl;
+		sleep(1);
+		std::cout << "Pense... Pense..." << std::endl;
+		srand(time(NULL));
+		i = rand();
+		if (i % 2 == 0)
+			std::cout << this->_cible << " à été robotomisé avec succès" << std::endl;
+		else
+			std::cout << this->_cible << " n'a pas pu être robotomisé" << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

@@ -7,20 +7,16 @@
 
 int main( void )
 {
-	try 
-	{
-		Bureaucrat B1("Base", 100);
+	Bureaucrat B1("Base", -1);
 
-		Intern i;
+	AForm	*Impots;
+
+	Intern i;
+
+	Impots = i.makeForm("robotomy request", "B1");
+	i.makeForm("presidential pardon", "B1");
+	i.makeForm("", "");
 	
-		i.makeForm("robotomy request", "B1");
-		i.makeForm("presidential pardon", "B1");
-		i.makeForm("iiibubibuibuyivtyigvojpnpinmnjbhgvfcdxwq<zewresxtdcyfvubg", "");
-	}
-	catch (const std::exception& e) 
-	{
-		std::cout << e.what() << std::endl;
-	}
-
+	Impots->execute(B1);
 	return 0; 
 }

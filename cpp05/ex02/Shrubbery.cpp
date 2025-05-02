@@ -25,46 +25,53 @@ std::ostream	&operator<<(std::ostream &output, ShrubberyCreationForm const &src)
 
 void	ShrubberyCreationForm::beExecuted(Bureaucrat const &exec) const
 {
-	std::string filename;
-	std::ofstream file;
-
-	if (exec.GetGrade() > this->GetGrade2exec())
+	try 
 	{
-		std::cout << "Grade requis pour executer: " << this->GetGrade2exec() << " mais " << exec.GetName() << " à ";
-		throw GradeTooLowException();
+		std::string filename;
+		std::ofstream file;
+
+		if (exec.GetGrade() > this->GetGrade2exec())
+		{
+			std::cout << "Grade requis pour executer: " << this->GetGrade2exec() << " mais " << exec.GetName() << " à ";
+			throw GradeTooLowException();
+		}
+		filename = this->_cible + "_shrubbery";
+		file.open(filename.c_str());
+
+		if (file.is_open())
+		{
+			file << "          .     .  .      +     .      .          ." << std::endl;
+			file << "     .       .      .     #       .           ." << std::endl;
+			file << "        .      .         ###            .      .      ." << std::endl;
+			file << "      .      .   '#:. .-##'##-. .:#'  .      . "<< std::endl;
+			file << "          .      . '####'###'####'  ." << std::endl;
+			file << "       .     '#:.    .:#'###'#:.    .:#'  .        .       ." << std::endl;
+			file << "  .             '#########'#########'        .        ." << std::endl;
+			file << "        .    '#:.  '####'###'####'  .:#'   .       ." << std::endl;
+			file << "     .     .  '#######''##'##''#######'                  ." << std::endl;
+			file << "                .'##'#####'#####'##'           .      ." << std::endl;
+			file << "    .   '#:. ...  .:##'###'###'##:.  ... .:#'     ." << std::endl;
+			file << "      .     '#######'##'#####'##'#######'      .     ." << std::endl;
+			file << "    .    .     '#####''#######''#####'    .      ." << std::endl;
+			file << "            .     '      000      '    .     ." << std::endl;
+			file <<"        .         .   .   000     .        .       ." << std::endl;
+			file <<". . .. ------------------O000O-----------------...." << std::endl;
+			file << "  						 ____ 											 " << std::endl;
+			file << "' 						/      \\												" << std::endl;
+			file << " 						| 0  0 | 												" << std::endl;
+			file << " 						|  \\/  | 												"<< std::endl;
+			file << " 						|  --  | 													" << std::endl;
+			file << " 						| \\__/ | 												" << std::endl;
+			file << " 						 \\____ /  												" << std::endl;
+			file << " 						 /| || |\\ 												"<< std::endl;
+			file << "						/_|_||_|_\\												" << std::endl;
+			file << "						   /  \\  													" << std::endl;
+			file << std::endl;
+		}
 	}
-	filename = this->_cible + "_shrubbery";
-	file.open(filename.c_str());
-
-	if (file.is_open())
+	catch(std::exception &e)
 	{
-		file << "          .     .  .      +     .      .          ." << std::endl;
-		file << "     .       .      .     #       .           ." << std::endl;
-		file << "        .      .         ###            .      .      ." << std::endl;
-		file << "      .      .   '#:. .-##'##-. .:#'  .      . "<< std::endl;
-		file << "          .      . '####'###'####'  ." << std::endl;
-		file << "       .     '#:.    .:#'###'#:.    .:#'  .        .       ." << std::endl;
-		file << "  .             '#########'#########'        .        ." << std::endl;
-		file << "        .    '#:.  '####'###'####'  .:#'   .       ." << std::endl;
-		file << "     .     .  '#######''##'##''#######'                  ." << std::endl;
-		file << "                .'##'#####'#####'##'           .      ." << std::endl;
-		file << "    .   '#:. ...  .:##'###'###'##:.  ... .:#'     ." << std::endl;
-		file << "      .     '#######'##'#####'##'#######'      .     ." << std::endl;
-		file << "    .    .     '#####''#######''#####'    .      ." << std::endl;
-		file << "            .     '      000      '    .     ." << std::endl;
-		file <<"        .         .   .   000     .        .       ." << std::endl;
-		file <<". . .. ------------------O000O-----------------...." << std::endl;
-		file << "  						 ____ 											 " << std::endl;
-		file << "' 						/      \\												" << std::endl;
-		file << " 						| 0  0 | 												" << std::endl;
-		file << " 						|  \\/  | 												"<< std::endl;
-		file << " 						|  --  | 													" << std::endl;
-		file << " 						| \\__/ | 												" << std::endl;
-		file << " 						 \\____ /  												" << std::endl;
-		file << " 						 /| || |\\ 												"<< std::endl;
-		file << "						/_|_||_|_\\												" << std::endl;
-		file << "						   /  \\  													" << std::endl;
-		file << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 
