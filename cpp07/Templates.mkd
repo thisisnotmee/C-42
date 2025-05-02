@@ -1,0 +1,11 @@
+# Templates
+#### Comment ca fonctionne ?
+
+`template <typename T> void swap(T &a, T &b)`
+
+##### Template veut dire, "c'est un modèle"
+Ce "modèle" est compatible avec n'importe quel type de données
+
+On passe le type de données en paramètre pour éviter de répéter le code.
+
+

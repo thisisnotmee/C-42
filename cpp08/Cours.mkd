@@ -1,0 +1,14 @@
+# Std::Vector
+
+##### vector = tableau dynamique qui se redimmensionne si l'on ajoute ou enlève des éléments
+
+Exemple :
+
+`vector<char> v = {'a', 'f', 'd'};`
+\
+\
+Il est utilisable comme un tableau de valeurs en language C.
+
+
+std::vector, dispose de fonction interne a la librairie pour modifier plus vite le tableau.
+

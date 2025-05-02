@@ -1,24 +1,5 @@
 #include "Bureaucrat.hpp"
 
-/*
-_____________________________________________________
-
-					EXERCICE 1	
-					Consignes
-_____________________________________________________
-
-Création d'une classe bureaucrate en forme canonique.
-Ajout de std::exception pour gérer les erreurs.
-
-Deux exceptions : Grade trop haut, grade trop bas.
-
-150 = MIN_GRADE
-
-1 = MAX_GRADE
-
-*/
-
-
 Bureaucrat::Bureaucrat( void ): _name("default")
 {
 	this->SetGrade(150);
@@ -65,7 +46,8 @@ std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &src)
 
 void	Bureaucrat::GradeIncrase( void )
 {
-	try {
+	try
+	{
 		if (this->GetGrade() == 1)
 			throw GradeTooHighException();
 		else
@@ -79,7 +61,8 @@ void	Bureaucrat::GradeIncrase( void )
 
 void	Bureaucrat::GradeDecrase( void )
 {
-	try {
+	try
+	{
 		if (this->GetGrade() == 150)
 			throw GradeTooLowException();
 		else
@@ -93,7 +76,8 @@ void	Bureaucrat::GradeDecrase( void )
 
 void	Bureaucrat::SetGrade(int grade)
 {
-	try{
+	try
+	{
 		if (grade < 1)
 			throw GradeTooHighException();
 		else if (grade > 150)

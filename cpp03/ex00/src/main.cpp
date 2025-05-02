@@ -23,6 +23,7 @@ int main( void )
 
 	first.infos();
 	second.infos();
+	second
 
 	return 0;
 }

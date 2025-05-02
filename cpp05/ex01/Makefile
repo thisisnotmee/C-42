@@ -1,4 +1,4 @@
-NAME = BUREAU-CRAT
+NAME = EX01_EXEC
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
