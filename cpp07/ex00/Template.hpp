@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TEMPLATE_HPP
+#define TEMPLATE_HPP
 
 template <typename T> void swap(T &a, T &b)
 {
@@ -19,3 +20,5 @@ T min(T a, T b)
 {
 	return (a < b) ? a : b;
 }
+
+#endif

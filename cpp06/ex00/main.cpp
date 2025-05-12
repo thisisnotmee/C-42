@@ -1,22 +1,14 @@
-#include "Scalar.hpp"
-
-using namespace std;
+#include "ScalarConverter.hpp"
 
 int main(int ac, char **av)
 {
-	if (ac > 2 || ac < 2)
-		std::cout << "Attention, il y a une erreur d'arguments. Vérifiez à nouveau..." << std::endl;
-	else
-	{
-		std::string str = av[1]; // av[1] = argument
-		try
-		{
-			ScalarConverter::Convert(str);
-		}
-		catch (const std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+	system("clear");
+	if (ac != 2) {
+		std::cout << " Erreur ce programme ne prend qu'un argument \n";
+		return (1);
 	}
-	return 0;	
+	try	{ ScalarConverter::convert(av[1]); }
+	catch(const std::exception& e) { std::cerr << "[Error]: " << e.what() << std::endl; }
+
+	return 0;
 }

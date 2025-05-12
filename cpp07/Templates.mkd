@@ -8,4 +8,6 @@ Ce "modèle" est compatible avec n'importe quel type de données
 
 On passe le type de données en paramètre pour éviter de répéter le code.
 
+##### Exemple :
 
+``

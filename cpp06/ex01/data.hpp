@@ -4,11 +4,20 @@
 #include <iostream>
 #include <stdint.h>
 
-struct Data {
-	int n;
-};
+typedef struct Data
+{
+	std::string str;
+	int a;
+} Data;
 
-uintptr_t serialize(Data *ptr);
-Data *deserialize(uintptr_t raw);
+
+class Serializer {
+	public :
+		static uintptr_t serialize(Data *ptr);
+		static Data *deserialize(uintptr_t raw);
+	private :
+		Serializer();		
+		~Serializer();
+};
 
 #endif

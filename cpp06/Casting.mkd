@@ -1,0 +1,32 @@
+##  CPP-06 Casting en C++
+
+#### 
+
+##### Comprendre les différents cast en C++
+
+Les **casting operators** convertissent un type de donnée vers un autre. Ce procédé s'appelle le `Type casting`.
+
+##### Il existe 4 types de casting :
+
+- static_cast
+- dynamic_cast
+- const_cast
+- reinterpret_cast
+
+##### 1. Static_Cast
+
+C'est un cast dit `explicit` crée par l'utilisateur et non le compilateur.
+Utilisée pour les convertions de types standart.
+
+##### 1. Dynamic_Cast
+
+Ce type de cast demande une méthode `virtuel` obligatoirement pour fonctionner. Cela active le **RTTI (Run-Time Type Information)**
+
+Exemple : 
+
+`Animal* myAnimal = new Dog();`
+
+`Family *Cat_family = new Family();`
+
+`Cat* myCat = dynamic_cast<Cat*>(Cat_name);`
+

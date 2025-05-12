@@ -1,4 +1,0 @@
-##  Static_Cast Convertion
-
-#### Qu'est ce que c'est ?
-
