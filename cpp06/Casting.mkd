@@ -15,18 +15,43 @@ Les **casting operators** convertissent un type de donnée vers un autre. Ce pro
 
 ##### 1. Static_Cast
 
-C'est un cast dit `explicit` crée par l'utilisateur et non le compilateur.
-Utilisée pour les convertions de types standart.
+Utilisée pour les convertions de types standart liés par leurs types
+Comme les int, float, double qui sont tous des nombres.
 
-##### 1. Dynamic_Cast
 
-Ce type de cast demande une méthode `virtuel` obligatoirement pour fonctionner. Cela active le **RTTI (Run-Time Type Information)**
+Exemple :
+`static_cast < nouveau_type > (exp);`
+
+##### 2. Dynamic_Cast
+
+Le dynamic_cast fonctionne sur du Polymorphisme uniquement (méthodes virtuelles).
+Cela active le **RTTI (Run-Time Type Information)**, nécessaire pour vérifier la validitée du cast durant la compilation.
+
+Peut servir à trouver un type de donnée parmis les d'autres.
+
+**downcasting** = Le downcasting sert à partir d'une classe de base et, via un cast, utiliser les membres ou méthodes spécifiques des classes dérivées.
 
 Exemple : 
 
 `Animal* myAnimal = new Dog();`
-
 `Family *Cat_family = new Family();`
-
 `Cat* myCat = dynamic_cast<Cat*>(Cat_name);`
+
+##### 3. Const_cast
+
+Ajoute ou retirer le const devant un objet ou pointeur.
+
+`const int nbr = 10;`
+`int* NotConst = const_cast<int*>(&nbr);`
+
+Nécessite un objet ou pointeur, pas de type standart
+
+##### 4. Reinterpret_Cast
+
+L' opérateur reinterpret_cast permet de convertir le pointeur en tout autre type. Il ne vérifie pas si le pointeur converti est du même type.
+
+Ca permet de transformer un char en int illisible pour l'utilisateur.
+Utile pour du stockage ou de la communication de réseaux pour transmettre des données lisibles facilement et plus optimisées.
+
+`reinterpréter_cast < nouveau_type > (exp);`
 

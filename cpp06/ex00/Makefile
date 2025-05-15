@@ -1,9 +1,28 @@
-NAME = Convertiser
+NAME = exec
 
-all :
-	@c++ -Wall -Werror -Wextra *.cpp -o $(NAME)
-	@./$(NAME) "-4000.2"
+CC = c++
 
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-clean : 
-	@rm -rf $(NAME)
+SRCS = *.cpp
+
+OBJ = $(SRCS:.cpp=.o)
+
+RM = rm -rf
+
+all : $(NAME)
+
+%.o:%.cpp
+	c++ $(CPPFLAGS) -I./ -c $< -o $@
+
+$(NAME) : $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+clean:
+	$(RM) ./*.o
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re: fclean
+	$(NAME)

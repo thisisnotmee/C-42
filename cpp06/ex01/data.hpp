@@ -15,6 +15,7 @@ class Serializer {
 	public :
 		static uintptr_t serialize(Data *ptr);
 		static Data *deserialize(uintptr_t raw);
+		static int		Intizer(Data *src);
 	private :
 		Serializer();		
 		~Serializer();

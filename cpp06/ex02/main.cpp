@@ -6,13 +6,13 @@
 #include <cstdlib>
 #include <ctime>
 
-void identify_pointer(Base * p)
+void identify_pointer(Base *src)
 {
-    if (dynamic_cast<A*>(p))
+    if (dynamic_cast<A*>(src))
         std::cout << "A" << std::endl;
-    else if (dynamic_cast<B*>(p))
+    else if (dynamic_cast<B*>(src))
         std::cout << "B" << std::endl;
-    else if (dynamic_cast<C*>(p))
+    else if (dynamic_cast<C*>(src))
         std::cout << "C" << std::endl;
 }
 

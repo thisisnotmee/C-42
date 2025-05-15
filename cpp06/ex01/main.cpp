@@ -1,6 +1,9 @@
 #include "data.hpp"
 
 
+
+
+
 int main()
 {
 	Data*	to_serialize = new Data;
@@ -11,7 +14,10 @@ int main()
 	
 	uintptr_t serialized = Serializer::serialize(to_serialize); 
 	deserialized = Serializer::deserialize(serialized);
+	
+	std::cout << "Data      = " << to_serialize->str << " agé de " << to_serialize->a << " ans" << std::endl;
+	std::cout << "uintptr_t = " << serialized << std::endl;
+	std::cout << "Data      = " << deserialized->str;
 
-	std::cout << serialized << std::endl;
-	std::cout << deserialized << std::endl;
+	return 0;
 }

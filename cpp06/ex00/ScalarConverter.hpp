@@ -10,6 +10,7 @@ class ScalarConverter {
 	private :
 		ScalarConverter();
 		~ScalarConverter();
+		ScalarConverter(ScalarConverter const &copie);
 };
 
 

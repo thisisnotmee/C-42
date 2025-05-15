@@ -18,3 +18,8 @@ Data *Serializer::deserialize(uintptr_t raw)
 {
 	return reinterpret_cast<Data*>(raw);
 }
+
+int		Serializer::Intizer(Data *src)
+{
+	return reinterpret_cast<int>(src->a);
+}
