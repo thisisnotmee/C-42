@@ -2,9 +2,7 @@
 #include "B.hpp"
 #include "C.hpp"
 #include "Base.hpp"
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+
 
 void identify_pointer(Base *src)
 {

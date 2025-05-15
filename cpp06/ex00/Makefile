@@ -4,7 +4,8 @@ CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = *.cpp
+SRCS = main.cpp\
+		ScalarConverter.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

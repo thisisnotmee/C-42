@@ -1,5 +1,4 @@
 #include "ScalarConverter.hpp"
-using namespace std;
 
 ScalarConverter::~ScalarConverter()
 {
@@ -42,8 +41,9 @@ void	FloatPrint(std::string str)
 	char	to_char;
 	int 	to_int;
 	double	to_double;
+	std::stringstream ss(str);
 
-	to_float = std::stof(str);
+	ss >> to_float;
 	to_char = static_cast<char>(to_float);
 	to_int = static_cast<int>(to_float);
 	to_double = static_cast<double>(to_float);
@@ -65,8 +65,9 @@ void	DoublePrint(std::string str)
 	char	to_char;
 	int 	to_int;
 	double	to_double;
+	std::stringstream ss(str);
 
-	to_double = std::stod(str);
+	ss >> to_double;
 	to_char = static_cast<char>(to_double);
 	to_int = static_cast<int>(to_double);
 	to_float = static_cast<float>(to_double);
@@ -87,8 +88,9 @@ void	IntPrint(std::string str)
 	char	to_char;
 	int 	to_int;
 	double	to_double;
+	std::stringstream ss(str);
 	
-	to_int = std::stoi(str);
+	ss >> to_int;
 	to_char = static_cast<char>(to_int);
 	to_double = static_cast<double>(to_int);
 	to_float = static_cast<float>(to_int);
@@ -109,8 +111,9 @@ void	CharPrint(std::string str)
 	char	to_char;
 	int 	to_int;
 	double	to_double;
+	std::stringstream ss(str);
 	
-	to_int = atoi(str.c_str());
+	ss >> to_int;
 	to_char = static_cast<char>(to_int);
 	to_double = static_cast<double>(to_int);
 	to_float = static_cast<float>(to_int);
@@ -162,12 +165,14 @@ std::string	TypeFind( std::string arg )
 		return "Erreur: Signes";
 	else if (other)
 		return "Erreur: argument illisible par le programme";
-	else if ( point == 1 && arg.back() == 'f' ) // Float
+	else if ( is_num >= 10 )
+		std::cout << "Erreur: INT_MAX" << std::endl;
+	else if ( point == 1 && arg[arg.size() - 1] == 'f' ) // Float
 	{
 		FloatPrint(arg);
 		return "float";
 	}
-	else if ( point == 1 && arg.back() != 'f' && is_num == (int)arg.size() - 1) // Double
+	else if ( point == 1 && arg[arg.size() - 1] != 'f' && is_num == (int)arg.size() - 1) // Double
 	{
 		DoublePrint(arg);
 		return "double";
@@ -182,8 +187,6 @@ std::string	TypeFind( std::string arg )
 		CharPrint(arg);
 		return "char";
 	}
-	else if ( arg.size() >= 10 )
-		std::cout << "Erreur: INT_MAX" << std::endl;
 	else
 		std::cout << "Erreur: ARGS" << std::endl;
 	return "\n";	
