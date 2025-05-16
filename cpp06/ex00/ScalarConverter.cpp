@@ -35,15 +35,17 @@ void	SpecialTypePrint(std::string arg)
 	}
 }
 
+
+
+
 void	FloatPrint(std::string str)
 {
 	float to_float;
 	char to_char;
 	int to_int;
 	double to_double;
-	// Input = 20.0f
 
-	to_float = std::stof(str);
+	to_float = std::atof(str.c_str());
 	to_char = static_cast<char>(to_float);
 	to_int = static_cast<int>(to_float);
 	to_double = static_cast<double>(to_float);
@@ -162,22 +164,22 @@ std::string	TypeFind( std::string arg )
 		return "Erreur: argument illisible par le programme";
 	else if ( is_num >= 10 )
 		std::cout << "Erreur: INT_MAX" << std::endl;
-	else if ( point == 1 && arg[arg.size() - 1] == 'f' ) // Float
+	else if ( point == 1 && arg[arg.size() - 1] == 'f' )
 	{
 		FloatPrint(arg);
 		return "--------";
 	}
-	else if ( point == 1 && arg[arg.size() - 1] != 'f' && is_num == (int)arg.size() - 1) // Double
+	else if ( point == 1 && arg[arg.size() - 1] != 'f' && is_num == (int)arg.size() - 1)
 	{
 		DoublePrint(arg);
 		return "--------";
 	}
-	else if ( is_num != 0 && (int)arg.size() == is_num + sign && sign <= 1) // Int
+	else if ( is_num != 0 && (int)arg.size() == is_num + sign && sign <= 1)
 	{
 		IntPrint(arg);
 		return "--------";
 	}
-	else if ( is_char == 1 && (int)arg.size() == is_char ) // Char
+	else if ( is_char == 1 && (int)arg.size() == is_char )
 	{
 		CharPrint(arg);
 		return "--------";

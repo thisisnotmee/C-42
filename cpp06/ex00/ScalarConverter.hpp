@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string>
 #include <sstream>
+#include <cstdlib>
+#include <stdlib.h>
 
 class ScalarConverter {
 	public :
