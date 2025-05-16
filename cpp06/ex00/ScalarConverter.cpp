@@ -37,17 +37,17 @@ void	SpecialTypePrint(std::string arg)
 
 void	FloatPrint(std::string str)
 {
-	float	to_float;
-	char	to_char;
-	int 	to_int;
-	double	to_double;
-	std::stringstream ss(str);
+	float to_float;
+	char to_char;
+	int to_int;
+	double to_double;
+	// Input = 20.0f
 
-	ss >> to_float;
+	to_float = std::stof(str);
 	to_char = static_cast<char>(to_float);
 	to_int = static_cast<int>(to_float);
 	to_double = static_cast<double>(to_float);
-
+	
 	if (!isprint(to_char))
 		std::cout << "char: non displayble" << std::endl;
 	else
@@ -105,23 +105,20 @@ void	IntPrint(std::string str)
 	std::cout << std::fixed << std::setprecision(1) << "float: " << to_float << "f" << std::endl;
 }
 
-void	CharPrint(std::string str)
+void	CharPrint(std::string const str)
 {
 	float	to_float;
-	char	to_char;
 	int 	to_int;
 	double	to_double;
-	std::stringstream ss(str);
-	
-	ss >> to_int;
-	to_char = static_cast<char>(to_int);
+
+	to_int = str[0] - '0';
 	to_double = static_cast<double>(to_int);
 	to_float = static_cast<float>(to_int);
 
-	if (!isprint(to_char))
+	if (!isprint(str[0]))
 		std::cout << "char: non displayble" << std::endl;
 	else
-		std::cout << "char: " << to_char << std::endl;
+		std::cout << "char: " << str[0] << std::endl;
 
 	std::cout << std::fixed << std::setprecision(1) << "double: " << to_double << std::endl;
 	std::cout << "int: " << to_int << std::endl;
@@ -144,8 +141,6 @@ std::string	TypeFind( std::string arg )
 		SpecialTypePrint(arg);
 		return "nan/nanf";
 	}
-
-
 	while (arg[i])
 	{
 		if ( arg[i] == '.' )
@@ -170,26 +165,26 @@ std::string	TypeFind( std::string arg )
 	else if ( point == 1 && arg[arg.size() - 1] == 'f' ) // Float
 	{
 		FloatPrint(arg);
-		return "float";
+		return "--------";
 	}
 	else if ( point == 1 && arg[arg.size() - 1] != 'f' && is_num == (int)arg.size() - 1) // Double
 	{
 		DoublePrint(arg);
-		return "double";
+		return "--------";
 	}
 	else if ( is_num != 0 && (int)arg.size() == is_num + sign && sign <= 1) // Int
 	{
 		IntPrint(arg);
-		return "int";
+		return "--------";
 	}
-	else if ( is_char != 0 && (int)arg.size() == is_char ) // Char
+	else if ( is_char == 1 && (int)arg.size() == is_char ) // Char
 	{
 		CharPrint(arg);
-		return "char";
+		return "--------";
 	}
 	else
 		std::cout << "Erreur: ARGS" << std::endl;
-	return "\n";	
+	return " ";	
 }
 
 

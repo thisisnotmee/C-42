@@ -1,10 +1,7 @@
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 #include "Base.hpp"
 
 
-void identify_pointer(Base *src)
+void identify_ptr(Base *src)
 {
     if (dynamic_cast<A*>(src))
         std::cout << "A" << std::endl;
@@ -14,7 +11,7 @@ void identify_pointer(Base *src)
         std::cout << "C" << std::endl;
 }
 
-void identify_reference(Base & p)
+void identify_ref(Base &p)
 {
     try 
 	{
@@ -58,17 +55,14 @@ int main(void)
 {
     std::srand(time(NULL));
     
-    for (int i = 0; i < 5; i++) 
+    for (int i = 0; i < 3; i++) 
 	{
         Base *base = generate();
-        
-        std::cout << "Test " << i + 1 << ":" << std::endl;
-        std::cout << "Pointer identification: ";
-        identify_pointer(base);
-        std::cout << "Reference identification: ";
-        identify_reference(*base);
-        std::cout << std::endl;
-        
+        std::cout << "Pointeur : ";
+        identify_ptr(base);
+        std::cout << "Référence : ";
+        identify_ref(*base);
+		        
         delete base;
     }
     
