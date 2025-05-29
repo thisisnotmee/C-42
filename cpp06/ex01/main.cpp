@@ -1,9 +1,5 @@
 #include "data.hpp"
 
-
-
-
-
 int main()
 {
 	Data*	to_serialize = new Data;

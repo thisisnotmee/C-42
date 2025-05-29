@@ -1,13 +1,19 @@
 # Templates
-#### Comment ca fonctionne ?
+#### Syntaxe 
 
-`template <typename T> void swap(T &a, T &b)`
+`template <typename T, typename C> void fonction( void )`
 
-##### Template veut dire, "c'est un modèle"
-Ce "modèle" est compatible avec n'importe quel type de données
+#### Template c'est quoi ?
 
-On passe le type de données en paramètre pour éviter de répéter le code.
+Les templates, permettent d'écrire des fonctions et classes en **paramétrant le type de certains de leurs constituants**
+(type de paramètre ou type de retour, type des éléments d'une classe.)
 
-##### Exemple :
+Les templates permettent d'écrire du **code générique**, c'est à dire qui peut être utilisé pour une famille de classes ou fonctions qui ne diffèrent que par la valeur en paramètre.
 
-``
+En résumé, template permet de **résumer**
+
+##### Les classes templates :
+
+`Array<T>::Array( Array<T> const &copie )`
+
+Nous avons `Array<T>`, est obligatoire pour le compilateur car c'est du **code générique** !
