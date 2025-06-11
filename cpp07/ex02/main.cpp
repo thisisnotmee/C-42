@@ -3,12 +3,19 @@
 int main( void )
 {
 	Array<int> tab(10);
-	tab[0] = rand() % 10;
-	tab[5] = rand() % 10;
-	std::cout << "TAB = " << VERT << tab << RESET << "\n";
+	srand(time(NULL));
+	int *a = new int();
+	
+	for (int i = 0; i < tab.getSize(); i++) {
+		tab[i] = rand() % 100;
+	}
+	
+	std::cout << "\nTemplate() = " << VERT << tab << RESET << "\n";
+	std::cout << "\nint *a = new int() = " << VERT << a << RESET << "\n";
 	Array<int> copie(tab);
-	std::cout << "COPIE = " << VERT << copie << RESET << "\n";
+	std::cout << "\nTemplate de copie = " << VERT << copie << RESET << "\n";
 
+	delete a;
 
 	return 0;
 }

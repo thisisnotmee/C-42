@@ -53,7 +53,7 @@ class Array
 template<class T>
 Array<T>::Array( void )
 {
-	std::cout << ROUGE_CLAIR << "-> Constructeur\n" << RESET;
+	std::cout << ROUGE_CLAIR << "\n-> Constructeur\n" << RESET;
 	this->_tab = nullptr;
 	this->_size = 0;
 }
@@ -61,7 +61,7 @@ Array<T>::Array( void )
 template<class T>
 Array<T>::Array( unsigned int n )
 {
-	std::cout << ROUGE_CLAIR << "-> Constructeur[n]\n" << RESET;
+	std::cout << ROUGE_CLAIR << "\n-> Constructeur[n]\n" << RESET;
 	this->_tab = new T[n];
 	this->_size = n;
 }
@@ -69,7 +69,7 @@ Array<T>::Array( unsigned int n )
 template<class T>
 Array<T>::Array( Array<T> const &copie )
 {
-	std::cout << ROUGE_CLAIR << "-> Copie\n" << RESET;
+	std::cout << ROUGE_CLAIR << "\n-> Constructeur de Copie\n" << RESET;
 	_tab = NULL;
 	operator=(copie);
 }
@@ -83,7 +83,7 @@ int		Array<T>::getSize( void ) const
 template <class T>
 Array<T>::~Array( void )
 {
-	std::cout << ROUGE_CLAIR << "-> Destructeur\n" << RESET;
+	std::cout << ROUGE_CLAIR << "\n-> Destructeur\n" << RESET;
 	delete[] _tab;
 }
 
@@ -93,7 +93,10 @@ void	Array<T>::print(std::ostream& stream) const
 	unsigned int i;
 
 	if (_size == 0)
-		std::cout << "Size vide" << std::endl;
+	{
+		std::cout << "Template Vide" << std::endl;
+		return ;
+	}
 	for (i = 0; i < _size - 1; i++)
 		stream << _tab[i] << " - ";
 	if (i == _size - 1)
@@ -104,7 +107,7 @@ template <class T>
 T&			Array<T>::operator[](unsigned int i) const
 {
 	if (i >= _size)
-		throw std::exception();
+		std::cerr << "Error Operator[]\n";
 	return _tab[i];
 }
 
