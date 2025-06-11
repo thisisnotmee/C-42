@@ -1,14 +1,15 @@
-# Std::Vector
+# CONTAINERS C++08
 
-##### vector = tableau dynamique qui se redimmensionne si l'on ajoute ou enlève des éléments
+#### Qu'est ce qu'un container ?
 
-Exemple :
+Vennant de la bibliothèque standart (STL), les conteneurs sont des structures de données.
 
-`vector<char> v = {'a', 'f', 'd'};`
-\
-\
-Il est utilisable comme un tableau de valeurs en language C.
+Une collection d'**objets**...
 
+#### Les différents conteneurs :
 
-std::vector, dispose de fonction interne a la librairie pour modifier plus vite le tableau.
+- Conteneurs de séquence (Array, Vector, Deque, List)
+- Conteneurs associatifs (Set, Map, MultiSet, MultiMap)
+- Conteneurs non ordonnés
+- Adaptateurs de conteneurs
 
