@@ -1,7 +1,7 @@
 #pragma
 
 #include <iostream>
-#include <set>
+#include <algorithm>
 #include <exception>
 
 class Span 
@@ -12,10 +12,8 @@ class Span
 	public :
 		Span(unsigned int n);
 		~Span();
-
 		Span(Span const &src);
 		Span &operator=(Span const &);
-
 		void 	addNumber(unsigned int n);
 		int		shortestSpan();
 		int		longestSpan();

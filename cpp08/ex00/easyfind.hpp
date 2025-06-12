@@ -1,11 +1,7 @@
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+#pragma once
 
 #include <iostream>
 #include <algorithm>
-#include <vector>
-#include <list>
-#include <stdio.h>      /* printf, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
@@ -41,15 +37,36 @@
 #define FOND_CYAN      "\033[46m"
 #define FOND_GRIS      "\033[47m"
 
-// Trouve le second dans le premier 
+
 template<typename T>
 void	easyfind(T container, int toFind)
 {
 	if (std::find(container.begin(), container.end(), toFind) != container.end())
-		std::cout << "\nContainer is contain the value : " << toFind;
+		std::cout << "\n Valeure trouver : " << toFind;
 	else
-		std::cout << "\nThe Value isnt in this containers\n";
+		std::cout << "\n Aucunes correspondances avec la liste\n";
 }
 
+static void	print(std::vector<int> &V)
+{
+	std::cout << "Vector Content = ";
+	std::cout << VERT_CLAIR << "[ ";
 
-#endif
+	for (size_t i = 0; i < V.size(); i++)
+	{
+       std::cout << V[i] << " ";
+	}
+	std::cout << "]\n" << RESET;
+}
+
+std::vector<int> VectorGen()
+{
+	std::vector<int>	V;
+	srand(time(NULL));
+
+	for (int i = 0; i < 10; i++)
+	{
+		V.push_back(rand() % 20);
+	}
+	return V;
+}
