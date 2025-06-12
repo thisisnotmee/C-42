@@ -1,6 +1,7 @@
 #ifndef ITER_HPP
 #define ITER_HPP
 
+#include <cstdlib>
 #include <iostream>
 
 // Reset

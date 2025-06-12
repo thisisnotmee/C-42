@@ -1,6 +1,8 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 #include <iostream>
+#include <cstdlib>
+
 #define RESET      "\033[0m"
 
 // Standard Colors
@@ -45,25 +47,32 @@ class Array
 		
 		void		print(std::ostream& os) const; // Affichage
 		int	getSize( void ) const; // getsize OK
+
+		class	OpException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw(){
+					return "\nUtilisation de l'operateur incorrecte\n";
+				}
+		};
 	private :
 		T*		_tab;
 		unsigned int		_size;
 };
 
 template<class T>
-Array<T>::Array( void )
+Array<T>::Array( void ): _size(0)
 {
 	std::cout << ROUGE_CLAIR << "\n-> Constructeur\n" << RESET;
-	this->_tab = nullptr;
-	this->_size = 0;
+	this->_tab = new T[_size];
 }
 
 template<class T>
-Array<T>::Array( unsigned int n )
+Array<T>::Array( unsigned int n ): _size(n)
 {
 	std::cout << ROUGE_CLAIR << "\n-> Constructeur[n]\n" << RESET;
-	this->_tab = new T[n];
-	this->_size = n;
+	this->_tab = new T[_size];
+
 }
 
 template<class T>
@@ -106,8 +115,10 @@ void	Array<T>::print(std::ostream& stream) const
 template <class T>
 T&			Array<T>::operator[](unsigned int i) const
 {
-	if (i >= _size)
-		std::cerr << "Error Operator[]\n";
+	if (i >= _size || _tab == NULL)
+	{
+		throw OpException();
+	}
 	return _tab[i];
 }
 
