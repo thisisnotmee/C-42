@@ -1,5 +1,6 @@
 NAME= easyFind
-SRC= $(wildcard *.cpp)
+SRC= main.cpp\
+
 OBJ= $(SRC:.cpp=.o)
 
 %.o: %.cpp

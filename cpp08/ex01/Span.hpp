@@ -32,7 +32,7 @@
 #define FOND_GRIS      "\033[47m"
 
 #include <iostream>
-#include <set>
+#include <algorithm>
 #include <exception>
 #include <time.h>
 
@@ -46,10 +46,8 @@ class Span
 		Span();
 		Span(unsigned int n);
 		~Span();
-
 		Span(Span const &src);
 		Span &operator=(Span const &);
-
 		void 	addNumber(unsigned int n);
 		int		shortestSpan();
 		int		longestSpan();

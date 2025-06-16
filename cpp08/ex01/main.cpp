@@ -2,6 +2,7 @@
 
 int main( void )
 {
+<<<<<<< HEAD
 	Span	s(100000000);
 	srand(time(NULL));
 
@@ -26,4 +27,10 @@ int main( void )
 	}
 	
 	return 0;
+=======
+    
+
+
+    return 0;
+>>>>>>> d3b8877453e6d74aa9576df5b4bab34a0fd192a3
 }

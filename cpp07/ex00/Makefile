@@ -6,6 +6,7 @@ OBJ= $(SRC:.cpp=.o)
 	c++ -Wall -Wextra -Werror -std=c++98 -I./ -c $< -o $@
 
 all: $(NAME)
+	@./$(NAME)
 
 $(NAME): $(OBJ)
 	c++ -Wall -Wextra -Werror -std=c++98 $(OBJ) -o $(NAME)
