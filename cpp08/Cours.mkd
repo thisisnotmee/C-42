@@ -1,10 +1,10 @@
-# CONTAINERS C++08
+# CPP-08 (Conteneurs)
 
-#### Qu'est ce qu'un container ?
+#### Qu'est ce qu'un conteneur ?
 
-Vennant de la bibliothèque standart (STL), les conteneurs sont des structures de données.
+C'est une structure de donnée.
+Diverses façons pratiques pour trier et stocker.
 
-Une collection d'**objets**...
 
 #### Les différents conteneurs :
 
@@ -12,4 +12,24 @@ Une collection d'**objets**...
 - Conteneurs associatifs (Set, Map, MultiSet, MultiMap)
 - Conteneurs non ordonnés
 - Adaptateurs de conteneurs
+
+###### Ex-00
+
+**Consigne :**  Retrouver une variable dans un container.
+
+Je crée une fonction `find` avec `template` pour adapter le container à tous les types.
+`std::find` = retrouve des éléments dans un containeur
+
+###### Ex-01
+
+**Consigne :**  Créer une classe qui a un conteneur et une taille définit par l'utilisateur, trouver la plus longue distance entre deux entiers.  
+Puis la plus courte.
+
+Je me sers de `std::sort` pour trier le conteneur, et des exceptions pour la gestion d'erreurs.
+
+###### Ex-02
+
+**Consigne :** Rendre iterable un conteneur qui ne l'est pas.
+
+Via l'héritage de du conteneur sur la classe il devient possible d'accéder à l'itération.
 

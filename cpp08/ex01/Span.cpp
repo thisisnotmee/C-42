@@ -1,13 +1,19 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int n)
+Span::Span(): _MAX_SIZE(0)
 {
-	_MAX_SIZE = n;
+	std::cout << VERT_CLAIR << "->Constructeur" << RESET << " [SPAN CLASS]\n";
+
+}
+
+Span::Span(unsigned int n): _MAX_SIZE(n)
+{
+	std::cout << VERT_CLAIR << "->Constructeur" << RESET << " [SPAN CLASS]\n";
 }
 
 Span::~Span()
 {
-
+	std::cout << ROUGE_CLAIR << "->Destructeur" << RESET << " [SPAN CLASS]";
 }
 
 Span::Span(Span const &src)
@@ -19,52 +25,50 @@ Span	&Span::operator=(Span const &src)
 {
 	if (this != &src)
 	{
-		this->_MAX_SIZE = src._MAX_SIZE;
-		this->_mySet = src._mySet;
+		_MAX_SIZE = src._MAX_SIZE;
+		_v = src._v;
 	}
+	return *this;
 }
 
 void	Span::addNumber(unsigned int n)
 {
-	try
-	{
-		if ((_mySet.size()) >= _MAX_SIZE)
-			throw MaxException();
-		else if (_mySet.size() < _MAX_SIZE)
-			this->_mySet.push_back(n);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "EXCEPTION CATCH : " << e.what();
-	}
+	if (_v.size() >= _MAX_SIZE)
+		throw VectorFullException();
+	else
+		_v.push_back(n);
+}
+
+void	Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+	if (std::distance(start, end) + _v.size() > _MAX_SIZE)
+		throw VectorFullException();
+	_v.insert(_v.end(), start, end);
 }
 
 int		Span::shortestSpan()
 {
-	try 
+	if (_v.size() <= 1)
+		throw ErrorException();
+
+	std::vector<int> tmp = _v;
+	std::sort(tmp.begin(), tmp.end());
+	int min = tmp[1] - tmp[0];
+	for (unsigned int i = 1; i < tmp.size(); i++)
 	{
-		if (_mySet.empty() || _mySet.size() == 1)
-			throw ErrorException();
-		
-		std::sort(_mySet.begin(), _mySet.end());
-		int intmax = std::numeric_limits<int>::max();
-
-		for (size_t i = 0; i < _mySet.size() - 1; ++i)
-		{
-			int temp = _mySet[i + 1] - _mySet[i];
-
-			if (temp < intmax)
-				intmax = temp;
-		}
-
+		if (tmp[i] - tmp[i - 1] < min)
+			min = tmp[i] - tmp[i - 1];
 	}
-	catch(std::exception &e)
-	{
-		std::cout << "Exception :" << e.what() << "\n";
-	}
+	return (min);
 }
 
 int		Span::longestSpan()
 {
+	if (_v.size() <= 1)
+		throw ErrorException();
 
+	std::vector<int> tmp = _v;
+	std::sort(tmp.begin(), tmp.end());
+
+	return (tmp[tmp.size() - 1] - tmp[0]);
 }
